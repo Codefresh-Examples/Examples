@@ -1,0 +1,4 @@
+FROM radial/busyboxplus:curl
+ADD ./tests /tests
+ADD api.py /tests
+WORKDIR /tests
