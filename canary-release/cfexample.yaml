@@ -1,0 +1,17 @@
+title: canary-release
+description: canary release pattern implementation with Codefresh pipelines and K8S
+sourceUrl: http://github.com/Codefresh-Examples/Examples/canary-release
+baseUrl: http://github.com/Codefresh-Examples/Examples/canary-release
+labels:
+  - canary
+  - delpoyment
+  - kubernetes
+icon: "icon.png"
+body: README.md
+supportingFiles:
+  - codefresh-canary.yaml
+  - codefresh-prod.yaml
+  - orni-dep-canary.yaml
+  - orni-dep-prod.yaml
+  - Dockerfile
+  - Dockerfie.test
