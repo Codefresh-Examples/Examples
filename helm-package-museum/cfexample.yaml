@@ -1,10 +1,11 @@
 title: Helm - packaging and pushing to Chart Museum
 description: Package a Helm chart and pushing it into Chart Museum repository. 
 sourceUrl: http://github.com/Codefresh-Examples/Examples/helm-package-museum
+baseUrl: https://raw.githubusercontent.com/Codefresh-Examples/Examples/master/helm-package-museum
 labels:
   - helm
   - chart-museum
 icon: "https://github.com/kubernetes-helm/chartmuseum/raw/master/logo.png"
 body: ./readme.md
-supportingFiles:
+extraFiles:
    - codefresh.yaml
