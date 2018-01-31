@@ -14,6 +14,7 @@ The `cfexample.yaml` file should follow the following structure:
 title: example1
 description: just an example
 sourceUrl: http://github.com/Codefresh-Examples/Examples/example1
+baseUrl: http://github.com/Codefresh-Examples/Examples/example1
 labels:
   - category1
 icon: "icon.png"
@@ -28,6 +29,7 @@ supportingFiles:
 |title|yes|none||
 |description|no|none||
 |sourceUrl|no|current folder url|url to the source of the example|
+|baseUrl|no|sourceUrl|url to prefix relative links in this yaml with|
 |labels|no|none||
 |icon|no|default icon|for display in Codefresh|
 |body|no|./readme.md||
