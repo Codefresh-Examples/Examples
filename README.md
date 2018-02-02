@@ -35,6 +35,8 @@ extraFiles:
 |body|no|./readme.md||
 |supportingFiles|no|none|files to highlight when browsing this example in Codefresh|
 
+> Note: concatenating `baseUrl` with other relative URLs in the same yaml should result in a valid URL
+
 ## Contributions
 
 Contributions are welcome! If you find any issue with one of the example, or want to request an example, feel free to open an issue.
