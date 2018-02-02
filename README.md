@@ -19,7 +19,7 @@ labels:
   - category1
 icon: "icon.png"
 body: readme.md
-supportingFiles:
+extraFiles:
   - codefresh.yaml
   - kubernetes-deployment.yaml
 ```
