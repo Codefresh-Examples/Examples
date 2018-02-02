@@ -1,0 +1,69 @@
+version: '1.0'
+steps:
+  buildAppImage:
+    type: build
+    description: Builds my service
+    image_name: otomato/ornithology
+    tag: ${{CF_SHORT_REVISION}}
+  pushAppImage:
+    type: push
+    candidate: ${{buildAppImage}}
+    tag: ${{CF_SHORT_REVISION}}
+  buildTestImage:
+    type: build
+    description: Builds image with tests
+    dockerfile: Dockerfile.test
+    image_name: otomato/ornitest
+    tag: ${{CF_SHORT_REVISION}}
+  pushTestImage:
+    type: push
+    candidate: ${{buildTestImage}}
+    tag: ${{CF_SHORT_REVISION}}
+  deployToK8s:
+    title: deploy-to-k8s
+    image: codefresh/k8s-kubectl
+    commands:
+      - sed -i -- "s/BUILD_NUMBER/${{CF_SHORT_REVISION}}/g" orni-dep-canary.yml
+      - kubectl config use-context cf-staging@codefresh-staging
+      - kubectl apply -f orni-dep-canary.yml -n otom8
+  testCanary:
+    title: testCanary
+    image: codefresh/k8s-kubectl
+    commands:
+      - kubectl config use-context cf-staging@codefresh-staging
+      - kubectl run e2e --image=otomato/ornitest:${{CF_SHORT_REVISION}} --attach=true --restart=Never --rm=true -n=otom8 --  "/tests/it/canarytest.sh"
+      - cf_export CANARY_EXIT_FLAG=$?
+    fail-fast: false
+  rollbackCanary:
+    title: rollbackCanary
+    image: codefresh/k8s-kubectl
+    commands:
+      - echo "Canary didn't pass isolation gate. Rolling back"
+      - kubectl delete -f orni-dep-canary.yml -n otom8
+    when:
+      condition:
+        all:
+          canaryTestFailed: "'${{CANARY_EXIT_FLAG}}' != '0'"
+  verifyCanaryInProd:
+    title: verifyCanaryInProd
+    image: codefresh/k8s-kubectl
+    commands:
+     - kubectl config use-context cf-staging@codefresh-staging
+     - export PODNAME=`kubectl get pods -n otom8 | grep canary | cut -d ' '  -f 1`
+     - kubectl label pod $PODNAME app=ornithology production=ready -n otom8
+     - kubectl run verify --image=otomato/ornitest:${{CF_SHORT_REVISION}} --attach=true --restart=Never --rm=true -n=otom8 --  "/tests/it/version_verify.sh"
+     - cf_export CANARY_EXIT_FLAG=$?
+  rollbackCanary2:
+    title: rollbackCanary2
+    image: codefresh/k8s-kubectl
+    commands:
+      - echo "Canary didn't pass isolation gate. Rolling back"
+      - kubectl delete -f orni-dep-canary.yml -n otom8
+    when:
+      condition:
+        all:
+          canaryTestFailed: "'${{CANARY_EXIT_FLAG}}' != '0'"
+  triggerProdDeployment:
+    image: codefresh/cli:latest
+    commands:
+      - codefresh run 5a5e15cc8aced0000153ba08 -b master -detach

@@ -1,0 +1,9 @@
+version: '1.0'
+steps:
+  deployToK8s:
+    title: deploy-to-k8s
+    image: codefresh/k8s-kubectl
+    commands:
+      - sed -i -- "s/BUILD_NUMBER/${{CF_SHORT_REVISION}}/g" orni-dep.yml
+      - kubectl config use-context cf-staging@codefresh-staging
+      - kubectl apply -f orni-dep.yml -n otom8
