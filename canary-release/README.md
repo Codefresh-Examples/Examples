@@ -64,12 +64,13 @@ Note the container spec of the deployment object:
 
 You will also notice that the deployment strategy for production pods is set to RollingUpdate, which means that once we are satisfied with the canary and ready to upgrade them  - they are replaced in a zero-downtime, ramped manner.
 
-The canary deployment declaration resides in orni-dep.yaml. It also defines 2 resources:
+The canary deployment declaration resides in orni-dep-canary.yaml. It also defines 2 resources:
 
-A cluster-visible ClusterIp type service named ‘ornithology-canary’
+ - A cluster-visible ClusterIp type service named ‘ornithology-canary’
 That exposes pods based on type=canary label  
-A deployment, also named ‘ornithology-canary’
+ - A deployment, also named ‘ornithology-canary’
 That creates 1 replica of our application pod with the matching type=canary label.
+
 This allows us to roll out the canary to the same cluster and namespace as the production but initially invisible to clients talking to the production version.
 
 ## Canary Gates
