@@ -7,7 +7,7 @@ Again - the flow here can be as complex or as simple as your specific environmen
 The number and type of required verification points, manual or automated approval processes, etc.
 For the sake of our example we’ve defined the following, fully automated flow:
 
-![The flow](/images/flow.png)
+![The flow](images/flow.png)
 
 Application code should reside in the file named api.py. This is what gets packaged inside the app Docker image.
 There are 2 dockerfiles in our repo: one named Dockerfile that is used to package and execute the application code and the other one named Dockerfile.test used to package and execute the tests. This is needed because we will run all of our tests inside the K8s cluster and we will use Docker to send them there.
@@ -20,11 +20,11 @@ There are 2 dockerfiles in our repo: one named Dockerfile that is used to packag
 Our goal in this example is to implement the trunk-based development and delivery pattern. We will do this by associating 2 Codefresh pipelines with the same github repository. Both watching the master branch.
 The Canary Pipeline
 
-First pipeline is the canary. It gets triggered by a Github webhook for each new master commit and is configured to use [codefresh-canary.yml](./codefresh-canary.yml) as its flow definition.
+First pipeline is the canary. It gets triggered by a Github webhook for each new master commit and is configured to use [codefresh-canary.yml](https://github.com/Codefresh-Examples/Examples/blob/master/canary-release/codefresh-canary.yml) as its flow definition.
 
 We first build and push the images for the application and for test execution. Steps appropriately named _buildAppImage, pushAppImage, buildTestImage and pushTestImage_ take care of that.
 
-The step _deployToK8s_ then uses the K8s deployment definition residing in [orni-dep-canary.yml](./orni-dep-canary.yml) to deploy our new version to the production cluster.
+The step _deployToK8s_ then uses the K8s deployment definition residing in [orni-dep-canary.yml](https://github.com/Codefresh-Examples/Examples/blob/master/canary-release/orni-dep-canary.yml) to deploy our new version to the production cluster.
 
 In _testCanary_ we run an end-to-end integration test on the canary in order the verify its health.
 
@@ -34,15 +34,17 @@ If all goes well - we proceed to _verifyCanaryInProd_ where we open 10% of produ
 
 Once that is completed - we call _triggerProdDeployment_ which executes Codefresh CLI  to run our second pipeline.
 
-The production pipeline is defined in [codefresh-prod.yml](./codefresh-prod.yml).
+The production pipeline is defined in [codefresh-prod.yml](https://github.com/Codefresh-Examples/Examples/blob/master/canary-release/codefresh-prod.yml).
 It gets triggered by the canary pipeline. It only has one step that updates a K8s deployment file with the docker image version created in the canary pipeline and then triggers a rolling update of all production pods with the new image version.
 
-The Deployment Files
+### The Deployment Files
+
 We are using 2 K8s declarative definition YAML files: one for the production instances and another one for the canary.
-The production one is called orni-dep.yaml and declares 2 K8s resources:
-An externally visible LoadBalancer type service named ‘ornithology’
-That exposes pods based on app=ornithology and production=ready labels  
-A deployment, also named ‘ornithology’
+The production one is called **orni-dep.yaml** and declares 2 K8s resources:
+
+ - An externally visible *LoadBalancer* type service named ‘ornithology’
+  That exposes pods based on app=ornithology and production=ready labels  
+ - A deployment, also named ‘ornithology’
 That creates 9 replicas of our application pod with the matching app=ornithology and production=ready labels
 
 Note the container spec of the deployment object:
@@ -70,7 +72,7 @@ A deployment, also named ‘ornithology-canary’
 That creates 1 replica of our application pod with the matching type=canary label.
 This allows us to roll out the canary to the same cluster and namespace as the production but initially invisible to clients talking to the production version.
 
-Canary Gates
+## Canary Gates
 As we already said - the real challenge with canary is building the quality gate that defines when and if the new version satisfies all the requirements and can incrementally be exposed to more production users.
 
 This gate could of course be purely manual. I.e - deploy the canary version, let it run for a while, analyze its logs and metrics to see if everything is working fine and then release to production.
