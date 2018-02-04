@@ -14,4 +14,4 @@ extraFiles:
   - orni-dep-canary.yml
   - orni-dep.yml
   - Dockerfile
-  - Dockerfie.test
+  - Dockerfile.test

@@ -7,7 +7,7 @@ Again - the flow here can be as complex or as simple as your specific environmen
 The number and type of required verification points, manual or automated approval processes, etc.
 For the sake of our example we’ve defined the following, fully automated flow:
 
-![The flow](images/flow.png)
+![The flow](https://github.com/Codefresh-Examples/Examples/blob/master/canary-release/images/flow.png)
 
 Application code should reside in the file named api.py. This is what gets packaged inside the app Docker image.
 There are 2 dockerfiles in our repo: one named Dockerfile that is used to package and execute the application code and the other one named Dockerfile.test used to package and execute the tests. This is needed because we will run all of our tests inside the K8s cluster and we will use Docker to send them there.
