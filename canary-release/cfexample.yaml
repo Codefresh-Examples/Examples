@@ -6,12 +6,12 @@ labels:
   - canary
   - delpoyment
   - kubernetes
-icon: "icon.png"
+icon: "https://codefresh.io/wp-content/uploads/2018/02/Kubernetes-canary.jpg"
 body: README.md
 extraFiles:
   - codefresh-canary.yml
-  - codefresh-prod.yaml
+  - codefresh-prod.yml
   - orni-dep-canary.yml
-  - orni-dep-prod.yml
+  - orni-dep.yml
   - Dockerfile
   - Dockerfie.test
