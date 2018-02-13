@@ -8,6 +8,7 @@ labels:
   - kubernetes
 icon: "https://codefresh.io/wp-content/uploads/2018/02/Kubernetes-canary.jpg"
 body: README.md
+codefreshfile: codefresh-canary.yml
 extraFiles:
   - codefresh-canary.yml
   - codefresh-prod.yml
