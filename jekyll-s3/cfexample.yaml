@@ -1,0 +1,8 @@
+title: Jekyll build and publish to S3
+description: Build a Jekyll site and publish it to S3 bucket
+sourceUrl: "https://github.com/Codefresh-Examples/Examples/tree/master/jekyll-s3"
+baseUrl: "https://raw.githubusercontent.com/Codefresh-Examples/Examples/master/jekyll-s3"
+labels:
+  - jekyll
+  - s3
+icon: "https://pbs.twimg.com/profile_images/378800000722495387/ad968c1615d956e800fa36494314f48c_400x400.jpeg"
