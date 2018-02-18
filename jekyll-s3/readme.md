@@ -11,7 +11,7 @@ This example demonstrates how to generate a static website using Jekyll, and pus
 2. push to s3
   - sync everything in `_site` into the bucket
 
-Pipeline variables:
+## Pipeline variables:
 
 name | value
 ---|---
