@@ -1,6 +1,6 @@
 This example demonstrates how to build multiple versions of a Docker image in parallel.
 
-Parallel execution is built into the [Codefresh CLI](http://cli.codefresh.io). We will leverage this feature in conjuntion with Docker's [build arguments], so run many pipelines in perallel, each building the same Dockerfile with different argument. The goal is to build Docker images for all the different versions of the Helm CLI tool (the result can be found on Docker Hub here: [https://hub.docker.com/r/codefresh/helm/](https://hub.docker.com/r/codefresh/helm/)).
+Parallel execution is built into the [Codefresh CLI](http://cli.codefresh.io). We will leverage this feature in conjuntion with Docker's [build arguments](https://docs.docker.com/engine/reference/builder/#arg), so run many pipelines in perallel, each building the same Dockerfile with different argument. The goal is to build Docker images for all the different versions of the Helm CLI tool (the result can be found on Docker Hub here: [https://hub.docker.com/r/codefresh/helm/](https://hub.docker.com/r/codefresh/helm/)).
 
 
 ## Pipeline walkthrough:
