@@ -2,7 +2,8 @@ This example demonstrates how to generate a static website using Jekyll, and pus
 
 [Jekyll](http://jekyllrb.com) is a popolar static site generator that is backed by GitHub, and is mostly used for blog sites, and documentation sites. We at Codefresh use Jekyll for our documentaion site - [http://docs.codefresh.io](http://docs.codefresh.io).
 
-Pipeline walkthrough:
+## Pipeline walkthrough:
+
 1. build the site with jekyll
   - change permissions in order to allow jekyll to write the site and bundler to override Gemfile.lock
   - set the correct uel and baseurl in the `_config.yml`
