@@ -1,0 +1,15 @@
+version: '1.0'
+steps:
+  build:
+    type: build
+    image_name: codefresh/helm
+    working_directory: ./
+    dockerfile: helm/Dockerfile
+    build-arguments:
+      - HELM_VERSION=${{HELM_VERSION}}
+    tag: ${{HELM_VERSION}}
+  push:
+    type: push
+    candidate: ${{build}}
+    tag: ${{HELM_VERSION}}
+    registry: dockerhub

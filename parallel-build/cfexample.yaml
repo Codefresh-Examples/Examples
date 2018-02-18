@@ -1,0 +1,12 @@
+title: Docker images build in parallel
+description: Build multiple Docker images based on the same Dockerfile in parallel using build arguments
+sourceUrl: "https://github.com/Codefresh-Examples/Examples/tree/master/parallel-build"
+baseUrl: "https://raw.githubusercontent.com/Codefresh-Examples/Examples/master/parallel-build"
+labels:
+  - Docker
+  - Codefresh-CLI
+icon: "http://laoblogger.com/images/multiple-arrow-clipart-7.jpg"
+codefreshfile: https://raw.githubusercontent.com/codefresh-contrib/images/master/kube-helm/codefresh.yaml
+extraFiles:
+  - https://raw.githubusercontent.com/codefresh-contrib/images/master/kube-helm/Dockerfile
+  - https://raw.githubusercontent.com/codefresh-contrib/images/master/helm-versions.yaml
