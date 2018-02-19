@@ -6,8 +6,9 @@ labels:
   - Docker
   - Codefresh-CLI
 icon: "http://laoblogger.com/images/multiple-arrow-clipart-7.jpg"
+codefreshfile: "https://github.com/codefresh-contrib/images/raw/master/helm/codefresh.yaml"
 extraFiles:
-  - codefresh.yaml
-  - Dockerfile
-  - helm-versions.yaml
+  - https://github.com/codefresh-contrib/images/raw/master/helm/codefresh.yaml
+  - https://github.com/codefresh-contrib/images/raw/master/helm/Dockerfile
+  - https://github.com/codefresh-contrib/images/blob/master/helm-versions.yaml
  
