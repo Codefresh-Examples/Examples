@@ -6,6 +6,5 @@ labels:
   - helm
   - chart-museum
 icon: "https://github.com/kubernetes-helm/chartmuseum/raw/master/logo.png"
-body: ./readme.md
 extraFiles:
    - codefresh.yaml
