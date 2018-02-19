@@ -7,5 +7,7 @@ labels:
   - Codefresh-CLI
 icon: "http://laoblogger.com/images/multiple-arrow-clipart-7.jpg"
 extraFiles:
+  - codefresh.yaml
   - Dockerfile
   - helm-versions.yaml
+ 

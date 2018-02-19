@@ -6,3 +6,5 @@ labels:
   - jekyll
   - s3
 icon: "https://pbs.twimg.com/profile_images/378800000722495387/ad968c1615d956e800fa36494314f48c_400x400.jpeg"
+extraFiles:
+  - codefresh.yaml
