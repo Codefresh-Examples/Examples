@@ -8,3 +8,4 @@ icon: "https://raw.githubusercontent.com/Codefresh-Examples/Examples/master/tag-
 codefreshfile: "codefresh.yaml"
 extraFiles:
  - "codefresh.yaml"
+ - "https://raw.githubusercontent.com/Codefresh-Examples/Examples/master/tag-latest-dockerhub"
