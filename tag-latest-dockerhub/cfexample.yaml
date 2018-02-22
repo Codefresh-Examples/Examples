@@ -1,0 +1,8 @@
+title: Tag latest image in DockerHub
+description: Find the highest version number of an image in DockerHub and tag it with 'latest' tag
+sourceUrl: "https://github.com/Codefresh-Examples/Examples/tree/master/tag-latest-dockerhub"
+baseUrl: "https://raw.githubusercontent.com/Codefresh-Examples/Examples/master/tag-latest-dockerhub"
+labels:
+  - Docker
+icon: "icon.png"
+codefreshfile: "codefresh.yaml"
