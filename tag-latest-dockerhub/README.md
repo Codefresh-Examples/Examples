@@ -2,7 +2,7 @@ This example demonstrates a pipeline that tags the latest version of an image in
 
 The original image must have been buit with Codefresh, so that it's available in Codefresh's embedded registry.
 
-The example uses a general purpose script at: [https://gist.github.com/itaysk/c023de03fe74dd3d5db336b7f9699b6b] (https://gist.github.com/itaysk/c023de03fe74dd3d5db336b7f9699b6b) that does the following:
+The example uses a general purpose script [here](https://gist.github.com/itaysk/c023de03fe74dd3d5db336b7f9699b6b) that does the following:
 
 1. call the Docker Hub api, asking for all the tag information for the given image
 2. extract tag values, disregard the 'latest' tag.
