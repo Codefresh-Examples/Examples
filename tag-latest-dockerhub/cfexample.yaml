@@ -6,3 +6,5 @@ labels:
   - Docker
 icon: "icon.png"
 codefreshfile: "codefresh.yaml"
+extraFiles:
+ - "codefresh.yaml"

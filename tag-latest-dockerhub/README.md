@@ -8,7 +8,7 @@ The example uses a general purpose script at: [https://gist.github.com/itaysk/c0
 2. extract tag values, disregard the 'latest' tag.
 3. sort and keep the last line. 
 
- The latest tag is determined using the `sort` command, and is subject to it's semantics. We have found that it worked fine for [Semantic Versioning (SemVer)][https://semver.org/] tags that are widely used.
+ The latest tag is determined using the `sort` command, and is subject to it's semantics. We have found that it worked fine for [Semantic Versioning (SemVer)](https://semver.org/) tags that are widely used.
 
 ## Pipeline walkthrough
 
