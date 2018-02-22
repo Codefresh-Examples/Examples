@@ -4,7 +4,7 @@ sourceUrl: "https://github.com/Codefresh-Examples/Examples/tree/master/tag-lates
 baseUrl: "https://raw.githubusercontent.com/Codefresh-Examples/Examples/master/tag-latest-dockerhub"
 labels:
   - Docker
-icon: "icon.png"
+icon: "https://raw.githubusercontent.com/Codefresh-Examples/Examples/master/tag-latest-dockerhub/icon.png"
 codefreshfile: "codefresh.yaml"
 extraFiles:
  - "codefresh.yaml"
