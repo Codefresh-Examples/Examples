@@ -32,4 +32,4 @@ steps:
      metadata:
         set:
           - ${{BuildImage.imageId}}:
-              - CLAIR_REPORT: "https://s3.eu-central-1.amazonaws.com/codefresh-demo/${{CF_BUILD_ID}}.txt"
+              - CLAIR_REPORT: "https://s3.${{AWS_DEFAULT_REGION}}.amazonaws.com/${{S3_BUCKETNAME}}/${{CF_BUILD_ID}}.txt"
