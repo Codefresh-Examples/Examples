@@ -1,0 +1,11 @@
+title: Scan an image with Clair
+description: Scan an image with Clair, annotate and persist the report
+sourceUrl: "https://github.com/Codefresh-Examples/Examples/tree/master/clair"
+baseUrl: "https://raw.githubusercontent.com/Codefresh-Examples/Examples/master/clair"
+labels:
+  - clair
+  - s3
+  - annotate
+icon: "https://cloud.githubusercontent.com/assets/343539/21630811/c5081e5c-d202-11e6-92eb-919d5999c77a.png"
+extraFiles:
+  - codefresh.yaml

@@ -1,0 +1,35 @@
+version: '1.0'
+steps:
+  BuildImage:
+    type: build
+    image_name: codefresh/demochat
+    tag: ${{CF_BRANCH}}
+  PushToRegistry:
+   type: push
+   candidate: '${{BuildImage}}'
+   tag: ${{CF_BRANCH}}
+   image_name: codefresh/demochat
+  Scan:
+    image: codefresh/klar
+    commands:
+      - /klar codefresh/demochat:${{CF_BRANCH}} | tee ./${{CF_BUILD_ID}}.txt
+    on_success:
+     metadata:
+        set:
+          - ${{BuildImage.imageId}}:
+              - CLAIR_SECURITY: true
+    on_fail:
+      metadata:
+        set:
+          - ${{BuildImage.imageId}}:
+              - CLAIR_SECURITY: false
+    fail_fast: false
+  archive_report:
+    image: mesosphere/aws-cli
+    commands:
+      - aws s3 cp ./${{CF_BUILD_ID}}.txt s3://${{S3_BUCKETNAME}}
+    on_success:
+     metadata:
+        set:
+          - ${{BuildImage.imageId}}:
+              - CLAIR_REPORT: "https://s3.eu-central-1.amazonaws.com/codefresh-demo/${{CF_BUILD_ID}}.txt"
