@@ -12,7 +12,7 @@ steps:
   Scan:
     image: codefresh/klar
     commands:
-      - /klar codefresh/demochat:${{CF_BRANCH}} | tee ./${{CF_BUILD_ID}}.txt
+      - /klar codefresh/demochat:${{CF_BRANCH}} | tee ./report.txt
     on_success:
      metadata:
         set:
@@ -27,7 +27,7 @@ steps:
   archive_report:
     image: mesosphere/aws-cli
     commands:
-      - aws s3 cp ./${{CF_BUILD_ID}}.txt s3://${{S3_BUCKETNAME}}
+      - aws s3 cp ./report.txt s3://${{S3_BUCKETNAME}}/${{CF_BUILD_ID}}.txt
     on_success:
      metadata:
         set:
