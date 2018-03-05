@@ -9,9 +9,10 @@ and the project page: https://github.com/optiopay/klar
 
 1. build the Docker image
 2. Scan using Clair
-  - the result is saved as a file into the workspace volume
-  - on success or failure, the result is saved as image annotation called  `CLAIR_SECURITY` which is a boolean flag.
-4. Push the generated report into s3, and keep a link to the report as image annotation called `CLAIR_REPORT`.
+  - declare we want to preserve the exit code of the command through pipes (the exit code will determine the step status which we rely on later on)
+  - scan the image, while saving the results to a local temporary file
+  - on success or failure, the result is saved as image annotation called `CLAIR_SECURITY` which is a boolean flag.
+4. Push the generated report (saved as file in the workspace directory) into s3, and keep a link to the report as image annotation called `CLAIR_REPORT`.
 
 ## Pipeline variables:
 

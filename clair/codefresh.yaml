@@ -12,6 +12,7 @@ steps:
   Scan:
     image: codefresh/klar
     commands:
+      - set -o pipefail
       - /klar codefresh/demochat:${{CF_BRANCH}} | tee ./report.txt
     on_success:
      metadata:
