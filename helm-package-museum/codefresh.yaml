@@ -4,11 +4,11 @@ steps:
     image: devth/helm
     commands:
       - cf_export PACKAGE=$(helm package mychart | cut -d " " -f 8)
-    get_repo_url:
-      image: codefresh/cli:latest
-      commands:
-        - cf_export HELM_URL=$(codefresh get ctx ${{REPO_NAME}} -o=yaml | grep repositoryUrl | cut -d "'" -f 2)
-    helm_push:
-      image: appropriate/curl
-      commands:
-        - curl --data-binary "@$PACKAGE" $HELM_URL/api/charts
+  get_repo_url:
+    image: codefresh/cli:latest
+    commands:
+      - cf_export HELM_URL=$(codefresh get ctx ${{REPO_NAME}} -o=yaml | grep repositoryUrl | cut -d "'" -f 2)
+  helm_push:
+    image: appropriate/curl
+    commands:
+      - curl --data-binary "@$PACKAGE" $HELM_URL/api/charts
