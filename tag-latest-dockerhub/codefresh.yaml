@@ -3,7 +3,7 @@ steps:
   get_version:
     image: codefresh/cfbase
     commands:
-      - cf_export LATEST_VERSION=$(curl --fail https://gist.githubusercontent.com/itaysk/c023de03fe74dd3d5db336b7f9699b6b/raw/a843fc768f5303397237fc9a3e4fd952f17177aa/get-latest-version-dockerhub.sh | bash)
+      - cf_export LATEST_VERSION=$(curl --fail https://gist.githubusercontent.com/itaysk/c023de03fe74dd3d5db336b7f9699b6b/raw/get-latest-version-dockerhub.sh | bash)
   push:
     type: push
     candidate: ${CFCR_REPO}/${CFCR_IMAGE}}:${LATEST_VERSION}
