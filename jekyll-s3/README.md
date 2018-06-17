@@ -6,7 +6,7 @@ This example demonstrates how to generate a static website using Jekyll, and pus
 
 1. build the site with jekyll
   - change permissions in order to allow jekyll to write the site and bundler to override Gemfile.lock
-  - set the correct uel and baseurl in the `_config.yml`
+  - set the correct url and baseurl in the `_config.yml`
   - build the site into the folder `_site`
 2. push to s3
   - sync everything in `_site` into the bucket
