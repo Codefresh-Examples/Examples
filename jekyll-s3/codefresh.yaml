@@ -5,7 +5,7 @@ steps:
     commands:
       - chmod 777 -R .
       - "sed -i 's|^url:.*|url: \"${{JEKYLL_URL}}\"|' _config.yml"
-      - "sed -i 's|^baseurl:.*|baseurl: \"${{JEKYLL_BASEUEL}}\"|' _config.yml"
+      - "sed -i 's|^baseurl:.*|baseurl: \"${{JEKYLL_BASEURL}}\"|' _config.yml"
       - jekyll build --destination _site
   push:
     image: mesosphere/aws-cli
